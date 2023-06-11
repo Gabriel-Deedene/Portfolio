@@ -166,6 +166,6 @@
   
     });
     // Author
-    console.log('File Name / snowyLandscape.js\nCreated Date / January 28, 2020\nAuthor / Toshiya Marukubo\nTwitter / https://twitter.com/toshiyamarukubo');
+    //console.log('File Name / snowyLandscape.js\nCreated Date / January 28, 2020\nAuthor / Toshiya Marukubo\nTwitter / https://twitter.com/toshiyamarukubo');
   })();
   
