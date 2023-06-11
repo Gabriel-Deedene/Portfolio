@@ -1,0 +1,33 @@
+
+* {
+    cursor: none;
+  }
+  
+  .cursor {
+    position: absolute;
+    height: var(--circle);
+    width: var(--circle);
+    transform:scale(1);
+    border-radius: 50%;
+    transition: all 0.35s, top 0s, left 0s;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  
+  .cursor:first-child {
+    background-color: #00f080;
+    --circle:9px
+  }
+  .cursor.second-cursor {
+    background-color: none;
+    border:1.5px solid #ffffff;
+    --circle:68px;
+  }
+  
+  .cursor:first-child.big{
+    --circle:140px;
+  }
+  .second-cursor.big { 
+    --circle:0px;
+    border-width:0px;
+  }

@@ -158,15 +158,6 @@
         for (var i = 0; i < backSnows.length; i++) {
           backSnows[i].resize();
         }
-        for (var i = 0; i < backTrees.length; i++) {
-          backTrees[i].resize();
-        }
-        for (var i = 0; i < trees.length; i++) {
-          trees[i].resize();
-        }
-        for (var i = 0; i < snows.length; i++) {
-          snows[i].resize();
-        }
       }
   
       window.addEventListener('resize', function() {
