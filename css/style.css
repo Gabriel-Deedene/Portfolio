@@ -13,6 +13,7 @@ body {
     background: linear-gradient(0.25turn, #777eca, #4d01a3);
     height: auto;
     width: auto;
+    z-index: 3;
 }
 
 canvas {
@@ -30,6 +31,10 @@ header {
     height: 100px;
     padding : 30px;
     display: flex;
+}
+
+#First-page {
+    height: 1000px;
 }
 
 #title-main {
@@ -50,6 +55,13 @@ header {
   color : #08ecb3;
 }
 
+#First-page img {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
 ul {
     padding: 0;
     margin: 0;
@@ -58,4 +70,12 @@ ul {
 li {
     margin-bottom: 10px;
     list-style-type: none;
+}
+
+
+#First-view-project {
+    display: flex;
+    flex-direction: row;
+    background : linear-gradient(rgb(255, 255, 255) 0%,rgb(33, 37, 52)12%);
+    height: 700px;
 }

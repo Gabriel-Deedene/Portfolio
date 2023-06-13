@@ -129,6 +129,82 @@
         var snow = new Snow(ctx, rand(0, X), rand(0, Y), rand(10, 15), Math.random() + 0.3);
         snows.push(snow);
       }
+
+
+    /********************
+      Tree
+    ********************/
+        
+    // var 
+    var treeNum = 30;
+    var trees = [];
+    var backTreeNum = 16;
+    var backTrees = [];
+    var branchRad = 30 * Math.PI / 180;
+
+    if (X < 768) {
+      treeNum = 15;
+      backTreeNum = 8;
+    }
+
+    function Tree(ctx, x, y, t, w, c) {
+      this.ctx = ctx;
+      this.init(x, y, t, w, c);
+    }
+
+    Tree.prototype.init = function(x, y, t, w, c) {
+      this.ctx = ctx;
+      this.x = x;
+      this.y = y + 93;
+      this.t = t;
+      this.w = w;
+      this.c = c;
+      this.splitNum = rand(10, 30);
+      this.tSplit = this.t / this.splitNum;
+      this.bSplit = this.w / this.splitNum;
+    };
+
+    Tree.prototype.draw = function() {
+      ctx = this.ctx;
+      ctx.lineCap = 'round';
+      ctx.lineWidth = 3;
+      ctx.strokeStyle = this.c;
+      ctx.beginPath();
+      ctx.moveTo(this.x, this.y);
+      ctx.lineTo(this.x, this.y - this.t);
+      ctx.stroke();
+      ctx.lineWidth = 1;
+      for (var i = 1, j = this.splitNum; i < this.splitNum; i++, j--) {
+        var bX1 = this.x + this.bSplit * j;
+        var bX2 = this.x - this.bSplit * j;
+        var bY = this.y - (Math.tan(branchRad) * this.bSplit * j) - this.tSplit * i;
+        ctx.moveTo(this.x, this.y - this.tSplit * i);
+        ctx.lineTo(bX1, bY);
+        ctx.stroke();
+        ctx.moveTo(this.x, this.y - this.tSplit * i);
+        ctx.lineTo(bX2, bY);
+        ctx.stroke();
+      }
+    };
+
+    Tree.prototype.resize = function() {
+      this.x = rand(0, X);
+      this.y = Y - Y * 0.1;
+    };
+
+    Tree.prototype.render = function() {
+      this.draw();
+    };
+
+    for (var i = 0; i < backTreeNum; i++) {
+      var tree = new Tree(ctx, rand(0, X), Y - Y * 0.1, rand(200, 400), rand(50, 100), 'rgb(126, 158, 209)');
+      backTrees.push(tree);
+    }
+
+    for (var i = 0; i < treeNum; i++) {
+      var tree = new Tree(ctx, rand(0, X), Y - Y * 0.1, rand(100, 300), rand(20, 100), 'rgb(255, 255, 255)');
+      trees.push(tree);
+    }
   
       /********************
         Render
@@ -139,9 +215,12 @@
         for (var i = 0; i < backSnows.length; i++) {
           backSnows[i].render();
         }
-        // for (var i = 0; i < snows.length; i++) {
-        //   snows[i].render();
-        // }
+        for (var i = 0; i < backTrees.length; i++) {
+          backTrees[i].render();
+        }
+        for (var i = 0; i < trees.length; i++) {
+          trees[i].render();
+        }
         requestAnimationFrame(render);
       }
   
@@ -157,6 +236,12 @@
         Y = canvas.height = window.innerHeight;
         for (var i = 0; i < backSnows.length; i++) {
           backSnows[i].resize();
+        }
+        for (var i = 0; i < backTrees.length; i++) {
+          backTrees[i].resize();
+        }
+        for (var i = 0; i < trees.length; i++) {
+          trees[i].resize();
         }
       }
   

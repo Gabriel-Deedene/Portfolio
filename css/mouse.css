@@ -4,7 +4,7 @@
   }
   
   .cursor {
-    position: absolute;
+    position: fixed;
     height: var(--circle);
     width: var(--circle);
     transform:scale(1);
@@ -21,7 +21,7 @@
   .cursor.second-cursor {
     background-color: none;
     border:1.5px solid #ffffff;
-    --circle:68px;
+    --circle:44px;
   }
   
   .cursor:first-child.big{
